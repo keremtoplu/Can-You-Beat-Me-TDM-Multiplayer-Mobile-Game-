@@ -5,15 +5,16 @@ public class CreateAndJoin : MonoBehaviourPunCallbacks
 
     [SerializeField]
     private GameObject[] enviroment;
+
+
     [SerializeField]
     private Vector3[] enviromentDesiredPos;
 
+
     public override void OnJoinedRoom()
     {
-
-        // UIManager.Instance.AllPanelClose();
-        // PlayerController.Instance.InıtPlayer();
-
+        UIController.Instance.AllPanelClose();
+        PlayerController.Instance.InıtPlayer();
     }
     public override void OnCreatedRoom()
     {

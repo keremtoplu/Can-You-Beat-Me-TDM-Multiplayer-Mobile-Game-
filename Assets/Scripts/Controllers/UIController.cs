@@ -23,8 +23,8 @@ public class UIController : Singleton<UIController>
     [SerializeField]
     private GameObject loadingPanel;
 
-    // [SerializeField]
-    //  private PlayerData playerData;
+    [SerializeField]
+    private PlayerData playerData;
 
     private void Start()
     {
@@ -56,13 +56,13 @@ public class UIController : Singleton<UIController>
     {
         PhotonNetwork.NickName = nickName.text;
     }
-    // public void ChoosedTeamChanged()
-    // {
+    public void ChoosedTeamChanged()
+    {
 
-    //     if (choosedTeam.value == 0)
-    //         playerData.PlayerTeam = Team.TeamA;
-    //     else if (choosedTeam.value == 1)
-    //         playerData.PlayerTeam = Team.TeamB;
+        if (choosedTeam.value == 0)
+            playerData.PlayerTeam = Team.TeamA;
+        else if (choosedTeam.value == 1)
+            playerData.PlayerTeam = Team.TeamB;
 
-    // }
+    }
 }
