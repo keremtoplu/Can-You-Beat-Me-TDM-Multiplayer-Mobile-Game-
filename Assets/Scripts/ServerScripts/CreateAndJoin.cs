@@ -13,7 +13,7 @@ public class CreateAndJoin : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        UIController.Instance.AllPanelClose();
+        UIController.Instance.OrganizePanels();
         PlayerController.Instance.InıtPlayer();
     }
     public override void OnCreatedRoom()

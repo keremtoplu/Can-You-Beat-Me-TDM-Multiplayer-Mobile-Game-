@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1471509144974354942}
   - component: {fileID: 541914979548017605}
   - component: {fileID: 4496132102590291185}
+  - component: {fileID: 838039604760315568}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128225080998926980}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.177948, y: -13.370617, z: 7.2522645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -167,6 +168,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f37c7de610ba0e7418049b7b6ec7fbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &838039604760315568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128225080998926980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37d705c8e9115e439ec799186182634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  variableJoystick: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
 --- !u!1 &4413149414156225601
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,6 +23,10 @@ public class UIController : Singleton<UIController>
     [SerializeField]
     private GameObject loadingPanel;
 
+
+    [SerializeField]
+    private GameObject joystick;
+
     [SerializeField]
     private PlayerData playerData;
 
@@ -41,14 +45,16 @@ public class UIController : Singleton<UIController>
         PhotonNetwork.JoinRoom(joinInputName.text);
     }
 
-    public void AllPanelClose()
+    public void OrganizePanels()
     {
         lobbyPanel.SetActive(false);
         loadingPanel.SetActive(false);
+        joystick.SetActive(true);
     }
     public void OpenLobbyPanel()
     {
-        AllPanelClose();
+        OrganizePanels();
+        joystick.SetActive(false);
         lobbyPanel.SetActive(true);
     }
 
