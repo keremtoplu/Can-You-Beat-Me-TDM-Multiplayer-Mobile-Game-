@@ -23,9 +23,8 @@ public class UIController : Singleton<UIController>
     [SerializeField]
     private GameObject loadingPanel;
 
-
     [SerializeField]
-    private GameObject joystick;
+    private GameObject inGameUI;
 
     [SerializeField]
     private PlayerData playerData;
@@ -35,6 +34,7 @@ public class UIController : Singleton<UIController>
 
         loadingPanel.SetActive(true);
         lobbyPanel.SetActive(false);
+        inGameUI.SetActive(false);
     }
     public void CreateRoom()
     {
@@ -49,12 +49,12 @@ public class UIController : Singleton<UIController>
     {
         lobbyPanel.SetActive(false);
         loadingPanel.SetActive(false);
-        joystick.SetActive(true);
+        inGameUI.SetActive(true);
     }
     public void OpenLobbyPanel()
     {
         OrganizePanels();
-        joystick.SetActive(false);
+        inGameUI.SetActive(false);
         lobbyPanel.SetActive(true);
     }
 

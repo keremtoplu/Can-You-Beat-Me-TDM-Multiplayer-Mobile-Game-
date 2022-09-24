@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IKillable
 {
     private Team team;
-    private int health;
+    private int health = 100;
 
     public Team Team
     {
@@ -17,9 +17,14 @@ public class Player : MonoBehaviour
         get { return health; }
         set { health = value; }
     }
-    void Start()
-    {
 
+    public void Damage(int Hit)
+    {
+        health -= Hit;
+        if (health <= 0)
+        {
+            PlayerController.Instance.Reborn(this);
+        }
     }
 
 }

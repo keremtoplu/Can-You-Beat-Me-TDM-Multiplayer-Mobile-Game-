@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     private Rigidbody rb;
@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     public void FixedUpdate()
     {
         Vector3 direction = Vector3.forward * PlayerController.Instance.FixedJoystick.Vertical + Vector3.right * PlayerController.Instance.FixedJoystick.Horizontal;
-        rb.AddForce(direction * speed * Time.fixedDeltaTime);
+        rb.velocity = direction * speed;
+        transform.LookAt(transform.position + new Vector3(PlayerController.Instance.FixedJoystick.Direction.x, 0, PlayerController.Instance.FixedJoystick.Direction.y));
     }
 }

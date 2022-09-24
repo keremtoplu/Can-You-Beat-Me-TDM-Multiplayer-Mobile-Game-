@@ -19,9 +19,13 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField]
     private PlayerData playerData;
 
+    [SerializeField]
+    private FixedJoystick fixedJoystick;
+
     private TextMeshPro teamText;
     private Vector3 playerDesiredPos;
     private Player playerVar;
+    public FixedJoystick FixedJoystick => fixedJoystick;
 
     void Start()
     {
@@ -36,6 +40,7 @@ public class PlayerController : Singleton<PlayerController>
             playerDesiredPos = teamBDesPos;
 
         var player = PhotonNetwork.Instantiate(playerPrefab.name, playerDesiredPos, Quaternion.identity);
+        MissileController.Instance.InıtMissile();
         var playerView = player.GetComponent<PhotonView>();
         playerVar = player.GetComponent<Player>();
         teamText = player.transform.GetChild(0).GetComponent<TextMeshPro>();
@@ -46,6 +51,25 @@ public class PlayerController : Singleton<PlayerController>
             playerView.RPC("SetPlayerVarriables", RpcTarget.Others);
         }
 
+    }
+
+    public void Reborn(Player player)
+    {
+        player.gameObject.SetActive(false);
+        LeanTween.delayedCall(3f, () =>
+        {
+            if (playerData.PlayerTeam == Team.TeamA)
+            {
+                player.transform.position = teamADesPos;
+                player.gameObject.SetActive(true);
+            }
+            else
+            {
+                player.transform.position = teamBDesPos;
+                player.gameObject.SetActive(true);
+            }
+
+        });
     }
 
     [PunRPC]
