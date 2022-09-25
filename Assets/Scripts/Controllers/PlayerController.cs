@@ -25,11 +25,16 @@ public class PlayerController : Singleton<PlayerController>
     private TextMeshPro teamText;
     private Vector3 playerDesiredPos;
     private Player playerVar;
-    public FixedJoystick FixedJoystick => fixedJoystick;
+    private Transform missileDesiredPos;
+    private Transform missilePoint;
 
+    public FixedJoystick FixedJoystick => fixedJoystick;
+    public Transform MissileDesiredPos => missileDesiredPos;
+    public Transform MissilePoint => missilePoint;
     void Start()
     {
         playerData.PlayerTeam = Team.TeamA;
+
     }
 
     public void InıtPlayer()
@@ -40,10 +45,12 @@ public class PlayerController : Singleton<PlayerController>
             playerDesiredPos = teamBDesPos;
 
         var player = PhotonNetwork.Instantiate(playerPrefab.name, playerDesiredPos, Quaternion.identity);
+        missileDesiredPos = player.transform.GetChild(0);
+        missilePoint = player.transform.GetChild(1);
         MissileController.Instance.InıtMissile();
         var playerView = player.GetComponent<PhotonView>();
         playerVar = player.GetComponent<Player>();
-        teamText = player.transform.GetChild(0).GetComponent<TextMeshPro>();
+        teamText = player.transform.GetChild(2).GetComponent<TextMeshPro>();
         teamText.text = playerView.Owner.NickName;
 
         if (!playerView.IsMine)

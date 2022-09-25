@@ -1817,7 +1817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missilePrefab: {fileID: 3496976909152122844, guid: bec1286b71e96b14eaa7e4611c539cbc, type: 3}
   missilePoolLenght: 200
-  missileDesiredPos: {x: 0, y: 0, z: 0}
+  missileDesiredPos: {x: 4, y: 0.2, z: -2}
 --- !u!1 &897699367
 GameObject:
   m_ObjectHideFlags: 0

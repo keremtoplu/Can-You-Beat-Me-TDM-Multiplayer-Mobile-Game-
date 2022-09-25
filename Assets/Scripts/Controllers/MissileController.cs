@@ -11,9 +11,6 @@ public class MissileController : Singleton<MissileController>
     [SerializeField]
     private int missilePoolLenght;
 
-    [SerializeField]
-    private Vector3 missileDesiredPos;
-
     private Queue<GameObject> missilePool = new Queue<GameObject>();
 
     public void InıtMissile()
@@ -22,13 +19,16 @@ public class MissileController : Singleton<MissileController>
         {
             var missile = PhotonNetwork.Instantiate(missilePrefab.name, Vector3.zero, Quaternion.identity);
             missilePool.Enqueue(missile);
+            missile.transform.SetParent(PlayerController.Instance.MissilePoint);
+            missile.SetActive(false);
         }
     }
 
     public void Fire()
     {
         var missile = missilePool.Dequeue();
-        missile.transform.position = missileDesiredPos;
+        missile.transform.eulerAngles = new Vector3(90, 0, 0);
+        missile.transform.SetParent(null);
         missile.SetActive(true);
         missilePool.Enqueue(missile);
     }

@@ -9,17 +9,18 @@ public class MissileMovement : MonoBehaviour
 
     [SerializeField]
     private int missileHit;
-    private Transform directionPathObj;
 
+    private Rigidbody rb;
 
     private void Start()
     {
-        directionPathObj = transform.GetChild(0);
+        rb = GetComponent<Rigidbody>();
     }
     void FixedUpdate()
     {
-        var direction = directionPathObj.position - transform.position;
-        transform.position += missileSpeed * direction * Time.fixedDeltaTime;
+        Vector3 distance = PlayerController.Instance.MissileDesiredPos.position - PlayerController.Instance.MissilePoint.position;
+        rb.velocity = distance * missileSpeed;
+
     }
 
     private void OnTriggerEnter(Collider other)
